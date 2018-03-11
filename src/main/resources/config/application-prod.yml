@@ -20,22 +20,19 @@ logging:
         io.github.jhipster: INFO
 
 spring:
+    autoconfigure:
+      exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
     devtools:
         restart:
             enabled: false
         livereload:
             enabled: false
     datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/ipayed?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
-        hikari:
-            data-source-properties:
-                cachePrepStmts: true
-                prepStmtCacheSize: 250
-                prepStmtCacheSqlLimit: 2048
-                useServerPrepStmts: true
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://google/demonstrator?cloudSqlInstance=demonstrator2-196501:us-east1:ipayed-db&amp;user=demonapp&amp;password=Mon3ychangrz&amp;useSSL=false
+#        url: jdbc:mysql://35.229.75.48:3306/demonstrator?user=demonapp&amp;password=Mon3ychangrz
+        username: demonapp
+        password: Mon3ychangrz
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: MYSQL

@@ -1,0 +1,144 @@
+
+entity Account {
+cust_id	Integer	required,
+Account_ID	String	required,
+TOS_Flag	String	required,
+Date_of_TOS	String	required,
+Account_Begin_Date	String	required,
+Account_Type	String	required,
+Account_End_Date	String	required,
+Account_Type_CD	String	required
+}
+entity Account_Type {
+Possible_Account_Type_for_iPayed String required,
+Account_Type_CD String required
+}
+
+entity Bad_Guy_List {
+Unique_record String required,
+Name_of_SDN String required,
+Type_of_SDN String required,
+Sanctions_Prgm_Name String required,
+title_of_individual String required,
+vessel_Call_Sign String required,
+Vessel_Tonnage String required,
+Gross_registered_tonnage String required,
+Vessel_Flag String required,
+Vessel_Owner String required,
+Remark String required
+}
+
+entity Customer {
+Account_ID String	required,
+address_1	String	required,
+address_2	String,
+business_name	String,
+city String	required,
+country	String	required,
+creation_date	String	required,
+cust_id	String	required,
+cust_type	String	required,
+dob	String	required,
+email	String,
+first_name	String,
+inactive_date	String,
+last_name	String,
+middle_name	String,
+phone String,
+Politically_Exposed_Person_Flag	String	required,
+state	String	required,
+status	String	required,
+tin	String	required,
+tin_type	String,
+title	String,
+zip	String	required
+}
+
+entity Customer_Activity {
+customer_id	String	required,
+IP_Address	String	required,
+Logon_Date_Time	String	required,
+Session_Length	String	required
+}
+
+entity Password {
+Access	String	required,
+Access_Level	String	required,
+customer_id	String	required,
+Logon_USER_ID	String	required,
+Password	String	required,
+User_Email	String	required
+}
+
+entity Prospect {
+address_1	String	required,
+address_2	String,
+business_name	String,
+city	String	required,
+country	String	required,
+cust_type	String	required,
+dob	String	required,
+email	String	required,
+first_name	String	required,
+last_name	String	required,
+middle_name	String,
+phone	String	required,
+Politically_Exposed_Person_Flag	String	required,
+Prospect_ID	String	required,
+state	String	required,
+status	String	required,
+tin	String	required,
+tin_type	String,
+title	String,
+zip	String	required
+}
+
+entity Trans8Mar {
+acct_id String required,
+amount Float required,
+Beginning_Account_Balance Float required,
+cd_flag String required,
+currency String required,
+datetime String required,
+Ending_Account_Balance Float required,
+Entity_Fee Float required,
+Linked_ipayed_trnx String required,
+Linked_trnx String required,
+txn_family_id String required,
+txn_id String required,
+txn_type_cd String required,
+txn_type_id String required
+}
+entity Transactions_Types {
+iPayed_trans_type	String	required,
+iPayed_orginator_fee	Float	required,
+iPayed_benefactor_fee	Float	required,
+Loop_type	String	required,
+Charge_up_fee	Float	required,
+Fee_to_iPayed	String	required,
+Trnx_Type_CD	String	required,
+Originator_Account_Typed_CD	String	required,
+Benefactor_Account_Type_CD	String	required
+}
+
+relationship OneToMany {
+	Transactions_Types{Tranx_Type_CD} to  Trans8Mar
+}
+relationship OneToMany {
+	Account_Type{Account_Type_CD} to  Account
+}
+relationship OneToMany {
+	Customer{customer_id} to  Customer_Activity
+}
+relationship OneToOne {
+	Customer{customer_id} to  Password
+}
+relationship ManyToOne {
+	Account{Account_ID} to  Customer
+}
+relationship OneToMany {
+	Account{Account_ID} to  Trans8Mar
+}
+relationship OneToMany {
+	Customer{cust_id} to  Trans8Mar
+}
