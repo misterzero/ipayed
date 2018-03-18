@@ -26,16 +26,11 @@ spring:
         livereload:
             enabled: false
     datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/ipayed?useUnicode=true&characterEncoding=utf8&useSSL=false
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:google:mysql://demonstrator2-196501:us-east1:ipayed-db/demonstrator?useSSL=false&user=root&password=Mon3ychangrz
+        #jdbc:mysql://35.229.75.48:3306/demonstrator?useSSL=false&user=demonapp
         username: root
-        password:
-        hikari:
-            data-source-properties:
-                cachePrepStmts: true
-                prepStmtCacheSize: 250
-                prepStmtCacheSqlLimit: 2048
-                useServerPrepStmts: true
+        password: Mon3ychangrz
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: MYSQL

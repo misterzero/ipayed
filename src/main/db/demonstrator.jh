@@ -1,0 +1,130 @@
+
+entity Account {
+  tosFlag String required,
+  dateOfTos String required,
+  accountBeginDate String required,
+  accountEndDate String required,
+  accountTypeCode String required
+}
+
+entity AccountType {
+  possibleIpayedAccountType String required,
+  accountTypeCode String required
+}
+
+entity BadGuyList {
+  uniqueRecord String required,
+  sdnName String required,
+  sdnType String required,
+  sanctionsProgramName String required,
+  titleOfIndividual String required,
+  vesselCallSign String required,
+  vesselTonnage String required,
+  grossRegisteredTonnage String required,
+  isVessel String required,
+  vesselOwner String required,
+  remark String required
+}
+
+entity Customer {
+  address1 String required,
+  address2 String,
+  businessName String,
+  city String required,
+  country String required,
+  createDate String required,
+  dob String required,
+  email String required,
+  firstName String,
+  inactiveDate String,
+  lastName String,
+  middleName String,
+  phone String,
+  isPoliticallyExposed String required,
+  state String required,
+  status String required,
+  tin String required,
+  tinType String,
+  title String,
+  zip String required
+}
+
+entity CustomerActivity {
+  ipAddress String required,
+  lastLoginDate String required,
+  sessionLengthSeconds String required
+}
+
+entity Prospect {
+  address1 String required,
+  address2 String,
+  businessName String,
+  city String required,
+  country String required,
+  customerType String required,
+  dob String required,
+  email String required,
+  firstName String required,
+  lastName String required,
+  middleName String,
+  phone String required,
+  isPoliticallyExposed String required,
+  prospectId String required,
+  state String required,
+  status String required,
+  tin String required,
+  tinType String,
+  title String,
+  zip String required
+}
+
+entity Trans8Mar {
+  amount Float required,
+  beginAccountBalance Float required,
+  isCd String required,
+  currency String required,
+  datetime String required,
+  endAccountBalance Float required,
+  entityFee Float required,
+  linkedIpayedTrans String required,
+  linkedTrans String required,
+  transFamilyId String required,
+  transTypeCode String required
+}
+
+entity TransactionType {
+  ipayedTransType String required,
+  ipayedOriginatorFee Float required,
+  ipayedBenefactorFee Float required,
+  loopType String required,
+  chargeupFee Float required,
+  feeToIpayed String required,
+  transTypeCode String required,
+  originatorAccountTypeCode String required,
+  benefactorAccountTypeCode String required
+}
+
+relationship ManyToOne {
+ Account{accountTypeCode} to AccountType{accountTypeCode}
+}
+
+relationship ManyToOne {
+ Trans8Mar to Account
+}
+
+relationship ManyToOne {
+ Trans8Mar{transTypeCode} to TransactionType{transTypeCode}
+}
+
+relationship ManyToOne {
+ CustomerActivity to Customer
+}
+
+relationship ManyToOne {
+ Account to Customer
+}
+
+relationship OneToMany {
+ Customer to Trans8Mar
+}
+
