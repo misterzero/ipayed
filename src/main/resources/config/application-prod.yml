@@ -20,8 +20,6 @@ logging:
         io.github.jhipster: INFO
 
 spring:
-    autoconfigure:
-      exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
     devtools:
         restart:
             enabled: false
@@ -29,9 +27,9 @@ spring:
             enabled: false
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://google/demonstrator?cloudSqlInstance=demonstrator2-196501:us-east1:ipayed-db&amp;user=demonapp&amp;password=Mon3ychangrz&amp;useSSL=false
-#        url: jdbc:mysql://35.229.75.48:3306/demonstrator?user=demonapp&amp;password=Mon3ychangrz
-        username: demonapp
+        url: jdbc:google:mysql://demonstrator2-196501:us-east1:ipayed-db/demonstrator?useSSL=false&user=root&password=Mon3ychangrz
+        #jdbc:mysql://35.229.75.48:3306/demonstrator?useSSL=false&user=demonapp
+        username: root
         password: Mon3ychangrz
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
