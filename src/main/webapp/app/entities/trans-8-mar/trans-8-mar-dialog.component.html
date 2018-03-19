@@ -1,0 +1,172 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTrans8MarLabel">Create or edit a Trans 8 Mar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!trans8Mar.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="trans8Mar.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="trans8Mar.amount" required/>
+            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amount?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amount?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_beginAccountBalance">Begin Account Balance</label>
+            <input type="number" class="form-control" name="beginAccountBalance" id="field_beginAccountBalance"
+                [(ngModel)]="trans8Mar.beginAccountBalance" required/>
+            <div [hidden]="!(editForm.controls.beginAccountBalance?.dirty && editForm.controls.beginAccountBalance?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.beginAccountBalance?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.beginAccountBalance?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_isCd">Is Cd</label>
+            <input type="text" class="form-control" name="isCd" id="field_isCd"
+                [(ngModel)]="trans8Mar.isCd" required/>
+            <div [hidden]="!(editForm.controls.isCd?.dirty && editForm.controls.isCd?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.isCd?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_currency">Currency</label>
+            <input type="text" class="form-control" name="currency" id="field_currency"
+                [(ngModel)]="trans8Mar.currency" required/>
+            <div [hidden]="!(editForm.controls.currency?.dirty && editForm.controls.currency?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.currency?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_datetime">Datetime</label>
+            <input type="text" class="form-control" name="datetime" id="field_datetime"
+                [(ngModel)]="trans8Mar.datetime" required/>
+            <div [hidden]="!(editForm.controls.datetime?.dirty && editForm.controls.datetime?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.datetime?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_endAccountBalance">End Account Balance</label>
+            <input type="number" class="form-control" name="endAccountBalance" id="field_endAccountBalance"
+                [(ngModel)]="trans8Mar.endAccountBalance" required/>
+            <div [hidden]="!(editForm.controls.endAccountBalance?.dirty && editForm.controls.endAccountBalance?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endAccountBalance?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.endAccountBalance?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_entityFee">Entity Fee</label>
+            <input type="number" class="form-control" name="entityFee" id="field_entityFee"
+                [(ngModel)]="trans8Mar.entityFee" required/>
+            <div [hidden]="!(editForm.controls.entityFee?.dirty && editForm.controls.entityFee?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.entityFee?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.entityFee?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_linkedIpayedTrans">Linked Ipayed Trans</label>
+            <input type="text" class="form-control" name="linkedIpayedTrans" id="field_linkedIpayedTrans"
+                [(ngModel)]="trans8Mar.linkedIpayedTrans" required/>
+            <div [hidden]="!(editForm.controls.linkedIpayedTrans?.dirty && editForm.controls.linkedIpayedTrans?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.linkedIpayedTrans?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_linkedTrans">Linked Trans</label>
+            <input type="text" class="form-control" name="linkedTrans" id="field_linkedTrans"
+                [(ngModel)]="trans8Mar.linkedTrans" required/>
+            <div [hidden]="!(editForm.controls.linkedTrans?.dirty && editForm.controls.linkedTrans?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.linkedTrans?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_transFamilyId">Trans Family Id</label>
+            <input type="text" class="form-control" name="transFamilyId" id="field_transFamilyId"
+                [(ngModel)]="trans8Mar.transFamilyId" required/>
+            <div [hidden]="!(editForm.controls.transFamilyId?.dirty && editForm.controls.transFamilyId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.transFamilyId?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_bankAccount">Bank Account</label>
+            <select class="form-control" id="field_bankAccount" name="bankAccount" [(ngModel)]="trans8Mar.bankAccount" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bankAccountOption.id === trans8Mar.bankAccount?.id ? trans8Mar.bankAccount : bankAccountOption" *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="trans8Mar.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === trans8Mar.customer?.id ? trans8Mar.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_transTypeCode">Trans Type Code</label>
+            <select class="form-control" id="field_transTypeCode" name="transTypeCode" [(ngModel)]="trans8Mar.transTypeCode" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="transactionTypeOption.id === trans8Mar.transTypeCode?.id ? trans8Mar.transTypeCode : transactionTypeOption" *ngFor="let transactionTypeOption of transactiontypes; trackBy: trackTransactionTypeById">{{transactionTypeOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

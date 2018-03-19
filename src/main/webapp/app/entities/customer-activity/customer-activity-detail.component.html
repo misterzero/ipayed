@@ -1,0 +1,40 @@
+
+<div *ngIf="customerActivity">
+    <h2><span>Customer Activity</span> {{customerActivity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ip Address</span></dt>
+        <dd>
+            <span>{{customerActivity.ipAddress}}</span>
+        </dd>
+        <dt><span>Last Login Date</span></dt>
+        <dd>
+            <span>{{customerActivity.lastLoginDate}}</span>
+        </dd>
+        <dt><span>Session Length Seconds</span></dt>
+        <dd>
+            <span>{{customerActivity.sessionLengthSeconds}}</span>
+        </dd>
+        <dt><span>Customer</span></dt>
+        <dd>
+            <div *ngIf="customerActivity.customer">
+                <a [routerLink]="['/customer', customerActivity.customer?.id]">{{customerActivity.customer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'customer-activity/'+ customerActivity.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

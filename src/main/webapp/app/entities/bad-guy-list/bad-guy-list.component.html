@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span>Bad Guy Lists</span>
+        <button class="btn btn-primary float-right jh-create-entity create-bad-guy-list" [routerLink]="['/', { outlets: { popup: ['bad-guy-list-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Bad Guy List
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="badGuyLists">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="uniqueRecord"><span>Unique Record</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sdnName"><span>Sdn Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sdnType"><span>Sdn Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sanctionsProgramName"><span>Sanctions Program Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="titleOfIndividual"><span>Title Of Individual</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vesselCallSign"><span>Vessel Call Sign</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vesselTonnage"><span>Vessel Tonnage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="grossRegisteredTonnage"><span>Gross Registered Tonnage</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isVessel"><span>Is Vessel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="vesselOwner"><span>Vessel Owner</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="remark"><span>Remark</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let badGuyList of badGuyLists ;trackBy: trackId">
+                <td><a [routerLink]="['../bad-guy-list', badGuyList.id ]">{{badGuyList.id}}</a></td>
+                <td>{{badGuyList.uniqueRecord}}</td>
+                <td>{{badGuyList.sdnName}}</td>
+                <td>{{badGuyList.sdnType}}</td>
+                <td>{{badGuyList.sanctionsProgramName}}</td>
+                <td>{{badGuyList.titleOfIndividual}}</td>
+                <td>{{badGuyList.vesselCallSign}}</td>
+                <td>{{badGuyList.vesselTonnage}}</td>
+                <td>{{badGuyList.grossRegisteredTonnage}}</td>
+                <td>{{badGuyList.isVessel}}</td>
+                <td>{{badGuyList.vesselOwner}}</td>
+                <td>{{badGuyList.remark}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bad-guy-list', badGuyList.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bad-guy-list/'+ badGuyList.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bad-guy-list/'+ badGuyList.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

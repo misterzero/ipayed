@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Trans8Mar.
+    -->
+    <changeSet id="20180319003611-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bank_account_id"
+                                 baseTableName="trans_8_mar"
+                                 constraintName="fk_trans8mar_bank_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bank_account"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="trans_8_mar"
+                                 constraintName="fk_trans8mar_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="trans_type_code_id"
+                                 baseTableName="trans_8_mar"
+                                 constraintName="fk_trans8mar_trans_type_code_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction_type"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,13 +1,17 @@
 
-entity Account {
+entity BankAccount {
   tosFlag String required,
   dateOfTos String required,
   accountBeginDate String required,
-  accountEndDate String required,
-  accountTypeCode String required
+  accountEndDate String required
 }
 
-entity AccountType {
+relationship ManyToOne {
+ BankAccount{accountTypeCode} to BankAccountType{accountTypeCode}
+ BankAccount{customer} to Customer
+}
+
+entity BankAccountType {
   possibleIpayedAccountType String required,
   accountTypeCode String required
 }
@@ -55,6 +59,10 @@ entity CustomerActivity {
   sessionLengthSeconds String required
 }
 
+relationship ManyToOne {
+ CustomerActivity{customer} to Customer
+}
+
 entity Prospect {
   address1 String required,
   address2 String,
@@ -88,8 +96,13 @@ entity Trans8Mar {
   entityFee Float required,
   linkedIpayedTrans String required,
   linkedTrans String required,
-  transFamilyId String required,
-  transTypeCode String required
+  transFamilyId String required
+}
+
+relationship ManyToOne {
+ Trans8Mar{bankAccount} to BankAccount
+ Trans8Mar{customer} to Customer
+ Trans8Mar{transTypeCode} to TransactionType{transTypeCode}
 }
 
 entity TransactionType {
@@ -104,27 +117,5 @@ entity TransactionType {
   benefactorAccountTypeCode String required
 }
 
-relationship ManyToOne {
- Account{accountTypeCode} to AccountType{accountTypeCode}
-}
-
-relationship ManyToOne {
- Trans8Mar to Account
-}
-
-relationship ManyToOne {
- Trans8Mar{transTypeCode} to TransactionType{transTypeCode}
-}
-
-relationship ManyToOne {
- CustomerActivity to Customer
-}
-
-relationship ManyToOne {
- Account to Customer
-}
-
-relationship OneToMany {
- Customer to Trans8Mar
-}
-
+service * with serviceImpl except TransactionType, AccountType
+paginate * with infinite-scroll  except TransactionType, AccountType

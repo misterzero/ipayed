@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "accountTypeCode",
+            "otherEntityName": "bankAccount",
+            "otherEntityRelationshipName": "accountTypeCode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "possibleIpayedAccountType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "accountTypeCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180319003606",
+    "entityTableName": "bank_account_type",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

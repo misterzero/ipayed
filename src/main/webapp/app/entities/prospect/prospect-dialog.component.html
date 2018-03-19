@@ -1,0 +1,215 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProspectLabel">Create or edit a Prospect</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!prospect.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="prospect.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_address1">Address 1</label>
+            <input type="text" class="form-control" name="address1" id="field_address1"
+                [(ngModel)]="prospect.address1" required/>
+            <div [hidden]="!(editForm.controls.address1?.dirty && editForm.controls.address1?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.address1?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_address2">Address 2</label>
+            <input type="text" class="form-control" name="address2" id="field_address2"
+                [(ngModel)]="prospect.address2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_businessName">Business Name</label>
+            <input type="text" class="form-control" name="businessName" id="field_businessName"
+                [(ngModel)]="prospect.businessName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                [(ngModel)]="prospect.city" required/>
+            <div [hidden]="!(editForm.controls.city?.dirty && editForm.controls.city?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.city?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_country">Country</label>
+            <input type="text" class="form-control" name="country" id="field_country"
+                [(ngModel)]="prospect.country" required/>
+            <div [hidden]="!(editForm.controls.country?.dirty && editForm.controls.country?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.country?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_customerType">Customer Type</label>
+            <input type="text" class="form-control" name="customerType" id="field_customerType"
+                [(ngModel)]="prospect.customerType" required/>
+            <div [hidden]="!(editForm.controls.customerType?.dirty && editForm.controls.customerType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.customerType?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dob">Dob</label>
+            <input type="text" class="form-control" name="dob" id="field_dob"
+                [(ngModel)]="prospect.dob" required/>
+            <div [hidden]="!(editForm.controls.dob?.dirty && editForm.controls.dob?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dob?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="prospect.email" required/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="prospect.firstName" required/>
+            <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="prospect.lastName" required/>
+            <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_middleName">Middle Name</label>
+            <input type="text" class="form-control" name="middleName" id="field_middleName"
+                [(ngModel)]="prospect.middleName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                [(ngModel)]="prospect.phone" required/>
+            <div [hidden]="!(editForm.controls.phone?.dirty && editForm.controls.phone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.phone?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_isPoliticallyExposed">Is Politically Exposed</label>
+            <input type="text" class="form-control" name="isPoliticallyExposed" id="field_isPoliticallyExposed"
+                [(ngModel)]="prospect.isPoliticallyExposed" required/>
+            <div [hidden]="!(editForm.controls.isPoliticallyExposed?.dirty && editForm.controls.isPoliticallyExposed?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.isPoliticallyExposed?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_prospectId">Prospect Id</label>
+            <input type="text" class="form-control" name="prospectId" id="field_prospectId"
+                [(ngModel)]="prospect.prospectId" required/>
+            <div [hidden]="!(editForm.controls.prospectId?.dirty && editForm.controls.prospectId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.prospectId?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_state">State</label>
+            <input type="text" class="form-control" name="state" id="field_state"
+                [(ngModel)]="prospect.state" required/>
+            <div [hidden]="!(editForm.controls.state?.dirty && editForm.controls.state?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.state?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="prospect.status" required/>
+            <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.status?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tin">Tin</label>
+            <input type="text" class="form-control" name="tin" id="field_tin"
+                [(ngModel)]="prospect.tin" required/>
+            <div [hidden]="!(editForm.controls.tin?.dirty && editForm.controls.tin?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tin?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tinType">Tin Type</label>
+            <input type="text" class="form-control" name="tinType" id="field_tinType"
+                [(ngModel)]="prospect.tinType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="prospect.title" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_zip">Zip</label>
+            <input type="text" class="form-control" name="zip" id="field_zip"
+                [(ngModel)]="prospect.zip" required/>
+            <div [hidden]="!(editForm.controls.zip?.dirty && editForm.controls.zip?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.zip?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Customer Activities</span>
+        <button class="btn btn-primary float-right jh-create-entity create-customer-activity" [routerLink]="['/', { outlets: { popup: ['customer-activity-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Customer Activity
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="customerActivities">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ipAddress"><span>Ip Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastLoginDate"><span>Last Login Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sessionLengthSeconds"><span>Session Length Seconds</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customer.id"><span>Customer</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let customerActivity of customerActivities ;trackBy: trackId">
+                <td><a [routerLink]="['../customer-activity', customerActivity.id ]">{{customerActivity.id}}</a></td>
+                <td>{{customerActivity.ipAddress}}</td>
+                <td>{{customerActivity.lastLoginDate}}</td>
+                <td>{{customerActivity.sessionLengthSeconds}}</td>
+                <td>
+                    <div *ngIf="customerActivity.customer">
+                        <a [routerLink]="['../customer', customerActivity.customer?.id ]" >{{customerActivity.customer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../customer-activity', customerActivity.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'customer-activity/'+ customerActivity.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'customer-activity/'+ customerActivity.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

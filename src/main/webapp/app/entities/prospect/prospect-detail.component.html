@@ -1,0 +1,102 @@
+
+<div *ngIf="prospect">
+    <h2><span>Prospect</span> {{prospect.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Address 1</span></dt>
+        <dd>
+            <span>{{prospect.address1}}</span>
+        </dd>
+        <dt><span>Address 2</span></dt>
+        <dd>
+            <span>{{prospect.address2}}</span>
+        </dd>
+        <dt><span>Business Name</span></dt>
+        <dd>
+            <span>{{prospect.businessName}}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+            <span>{{prospect.city}}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+            <span>{{prospect.country}}</span>
+        </dd>
+        <dt><span>Customer Type</span></dt>
+        <dd>
+            <span>{{prospect.customerType}}</span>
+        </dd>
+        <dt><span>Dob</span></dt>
+        <dd>
+            <span>{{prospect.dob}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{prospect.email}}</span>
+        </dd>
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{prospect.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{prospect.lastName}}</span>
+        </dd>
+        <dt><span>Middle Name</span></dt>
+        <dd>
+            <span>{{prospect.middleName}}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+            <span>{{prospect.phone}}</span>
+        </dd>
+        <dt><span>Is Politically Exposed</span></dt>
+        <dd>
+            <span>{{prospect.isPoliticallyExposed}}</span>
+        </dd>
+        <dt><span>Prospect Id</span></dt>
+        <dd>
+            <span>{{prospect.prospectId}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{prospect.state}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{prospect.status}}</span>
+        </dd>
+        <dt><span>Tin</span></dt>
+        <dd>
+            <span>{{prospect.tin}}</span>
+        </dd>
+        <dt><span>Tin Type</span></dt>
+        <dd>
+            <span>{{prospect.tinType}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{prospect.title}}</span>
+        </dd>
+        <dt><span>Zip</span></dt>
+        <dd>
+            <span>{{prospect.zip}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'prospect/'+ prospect.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

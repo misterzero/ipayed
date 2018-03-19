@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span>Trans 8 Mars</span>
+        <button class="btn btn-primary float-right jh-create-entity create-trans-8-mar" [routerLink]="['/', { outlets: { popup: ['trans-8-mar-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Trans 8 Mar
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="trans8Mars">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span>Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="beginAccountBalance"><span>Begin Account Balance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isCd"><span>Is Cd</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currency"><span>Currency</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="datetime"><span>Datetime</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endAccountBalance"><span>End Account Balance</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="entityFee"><span>Entity Fee</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="linkedIpayedTrans"><span>Linked Ipayed Trans</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="linkedTrans"><span>Linked Trans</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="transFamilyId"><span>Trans Family Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bankAccount.id"><span>Bank Account</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customer.id"><span>Customer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="transTypeCode.id"><span>Trans Type Code</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let trans8Mar of trans8Mars ;trackBy: trackId">
+                <td><a [routerLink]="['../trans-8-mar', trans8Mar.id ]">{{trans8Mar.id}}</a></td>
+                <td>{{trans8Mar.amount}}</td>
+                <td>{{trans8Mar.beginAccountBalance}}</td>
+                <td>{{trans8Mar.isCd}}</td>
+                <td>{{trans8Mar.currency}}</td>
+                <td>{{trans8Mar.datetime}}</td>
+                <td>{{trans8Mar.endAccountBalance}}</td>
+                <td>{{trans8Mar.entityFee}}</td>
+                <td>{{trans8Mar.linkedIpayedTrans}}</td>
+                <td>{{trans8Mar.linkedTrans}}</td>
+                <td>{{trans8Mar.transFamilyId}}</td>
+                <td>
+                    <div *ngIf="trans8Mar.bankAccount">
+                        <a [routerLink]="['../bank-account', trans8Mar.bankAccount?.id ]" >{{trans8Mar.bankAccount?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="trans8Mar.customer">
+                        <a [routerLink]="['../customer', trans8Mar.customer?.id ]" >{{trans8Mar.customer?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="trans8Mar.transTypeCode">
+                        <a [routerLink]="['../transaction-type', trans8Mar.transTypeCode?.id ]" >{{trans8Mar.transTypeCode?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../trans-8-mar', trans8Mar.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'trans-8-mar/'+ trans8Mar.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'trans-8-mar/'+ trans8Mar.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

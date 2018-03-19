@@ -1,0 +1,136 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTransactionTypeLabel">Create or edit a Transaction Type</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!transactionType.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="transactionType.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ipayedTransType">Ipayed Trans Type</label>
+            <input type="text" class="form-control" name="ipayedTransType" id="field_ipayedTransType"
+                [(ngModel)]="transactionType.ipayedTransType" required/>
+            <div [hidden]="!(editForm.controls.ipayedTransType?.dirty && editForm.controls.ipayedTransType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ipayedTransType?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ipayedOriginatorFee">Ipayed Originator Fee</label>
+            <input type="number" class="form-control" name="ipayedOriginatorFee" id="field_ipayedOriginatorFee"
+                [(ngModel)]="transactionType.ipayedOriginatorFee" required/>
+            <div [hidden]="!(editForm.controls.ipayedOriginatorFee?.dirty && editForm.controls.ipayedOriginatorFee?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ipayedOriginatorFee?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ipayedOriginatorFee?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_ipayedBenefactorFee">Ipayed Benefactor Fee</label>
+            <input type="number" class="form-control" name="ipayedBenefactorFee" id="field_ipayedBenefactorFee"
+                [(ngModel)]="transactionType.ipayedBenefactorFee" required/>
+            <div [hidden]="!(editForm.controls.ipayedBenefactorFee?.dirty && editForm.controls.ipayedBenefactorFee?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.ipayedBenefactorFee?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.ipayedBenefactorFee?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_loopType">Loop Type</label>
+            <input type="text" class="form-control" name="loopType" id="field_loopType"
+                [(ngModel)]="transactionType.loopType" required/>
+            <div [hidden]="!(editForm.controls.loopType?.dirty && editForm.controls.loopType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.loopType?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_chargeupFee">Chargeup Fee</label>
+            <input type="number" class="form-control" name="chargeupFee" id="field_chargeupFee"
+                [(ngModel)]="transactionType.chargeupFee" required/>
+            <div [hidden]="!(editForm.controls.chargeupFee?.dirty && editForm.controls.chargeupFee?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.chargeupFee?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.chargeupFee?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_feeToIpayed">Fee To Ipayed</label>
+            <input type="text" class="form-control" name="feeToIpayed" id="field_feeToIpayed"
+                [(ngModel)]="transactionType.feeToIpayed" required/>
+            <div [hidden]="!(editForm.controls.feeToIpayed?.dirty && editForm.controls.feeToIpayed?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.feeToIpayed?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_transTypeCode">Trans Type Code</label>
+            <input type="text" class="form-control" name="transTypeCode" id="field_transTypeCode"
+                [(ngModel)]="transactionType.transTypeCode" required/>
+            <div [hidden]="!(editForm.controls.transTypeCode?.dirty && editForm.controls.transTypeCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.transTypeCode?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_originatorAccountTypeCode">Originator Account Type Code</label>
+            <input type="text" class="form-control" name="originatorAccountTypeCode" id="field_originatorAccountTypeCode"
+                [(ngModel)]="transactionType.originatorAccountTypeCode" required/>
+            <div [hidden]="!(editForm.controls.originatorAccountTypeCode?.dirty && editForm.controls.originatorAccountTypeCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.originatorAccountTypeCode?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_benefactorAccountTypeCode">Benefactor Account Type Code</label>
+            <input type="text" class="form-control" name="benefactorAccountTypeCode" id="field_benefactorAccountTypeCode"
+                [(ngModel)]="transactionType.benefactorAccountTypeCode" required/>
+            <div [hidden]="!(editForm.controls.benefactorAccountTypeCode?.dirty && editForm.controls.benefactorAccountTypeCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.benefactorAccountTypeCode?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

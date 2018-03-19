@@ -1,0 +1,50 @@
+
+<div *ngIf="bankAccount">
+    <h2><span>Bank Account</span> {{bankAccount.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tos Flag</span></dt>
+        <dd>
+            <span>{{bankAccount.tosFlag}}</span>
+        </dd>
+        <dt><span>Date Of Tos</span></dt>
+        <dd>
+            <span>{{bankAccount.dateOfTos}}</span>
+        </dd>
+        <dt><span>Account Begin Date</span></dt>
+        <dd>
+            <span>{{bankAccount.accountBeginDate}}</span>
+        </dd>
+        <dt><span>Account End Date</span></dt>
+        <dd>
+            <span>{{bankAccount.accountEndDate}}</span>
+        </dd>
+        <dt><span>Account Type Code</span></dt>
+        <dd>
+            <div *ngIf="bankAccount.accountTypeCode">
+                <a [routerLink]="['/bank-account-type', bankAccount.accountTypeCode?.id]">{{bankAccount.accountTypeCode?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Customer</span></dt>
+        <dd>
+            <div *ngIf="bankAccount.customer">
+                <a [routerLink]="['/customer', bankAccount.customer?.id]">{{bankAccount.customer?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bank-account/'+ bankAccount.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
