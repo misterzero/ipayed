@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Transaction Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-transaction-type" [routerLink]="['/', { outlets: { popup: ['transaction-type-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Transaction Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="transactionTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Ipayed Trans Type</span></th>
+            <th><span>Ipayed Originator Fee</span></th>
+            <th><span>Ipayed Benefactor Fee</span></th>
+            <th><span>Loop Type</span></th>
+            <th><span>Chargeup Fee</span></th>
+            <th><span>Fee To Ipayed</span></th>
+            <th><span>Trans Type Code</span></th>
+            <th><span>Originator Account Type Code</span></th>
+            <th><span>Benefactor Account Type Code</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transactionType of transactionTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../transaction-type', transactionType.id ]">{{transactionType.id}}</a></td>
+                <td>{{transactionType.ipayedTransType}}</td>
+                <td>{{transactionType.ipayedOriginatorFee}}</td>
+                <td>{{transactionType.ipayedBenefactorFee}}</td>
+                <td>{{transactionType.loopType}}</td>
+                <td>{{transactionType.chargeupFee}}</td>
+                <td>{{transactionType.feeToIpayed}}</td>
+                <td>{{transactionType.transTypeCode}}</td>
+                <td>{{transactionType.originatorAccountTypeCode}}</td>
+                <td>{{transactionType.benefactorAccountTypeCode}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../transaction-type', transactionType.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transaction-type/'+ transactionType.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transaction-type/'+ transactionType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

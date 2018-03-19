@@ -1,0 +1,58 @@
+
+<div *ngIf="transactionType">
+    <h2><span>Transaction Type</span> {{transactionType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Ipayed Trans Type</span></dt>
+        <dd>
+            <span>{{transactionType.ipayedTransType}}</span>
+        </dd>
+        <dt><span>Ipayed Originator Fee</span></dt>
+        <dd>
+            <span>{{transactionType.ipayedOriginatorFee}}</span>
+        </dd>
+        <dt><span>Ipayed Benefactor Fee</span></dt>
+        <dd>
+            <span>{{transactionType.ipayedBenefactorFee}}</span>
+        </dd>
+        <dt><span>Loop Type</span></dt>
+        <dd>
+            <span>{{transactionType.loopType}}</span>
+        </dd>
+        <dt><span>Chargeup Fee</span></dt>
+        <dd>
+            <span>{{transactionType.chargeupFee}}</span>
+        </dd>
+        <dt><span>Fee To Ipayed</span></dt>
+        <dd>
+            <span>{{transactionType.feeToIpayed}}</span>
+        </dd>
+        <dt><span>Trans Type Code</span></dt>
+        <dd>
+            <span>{{transactionType.transTypeCode}}</span>
+        </dd>
+        <dt><span>Originator Account Type Code</span></dt>
+        <dd>
+            <span>{{transactionType.originatorAccountTypeCode}}</span>
+        </dd>
+        <dt><span>Benefactor Account Type Code</span></dt>
+        <dd>
+            <span>{{transactionType.benefactorAccountTypeCode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'transaction-type/'+ transactionType.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

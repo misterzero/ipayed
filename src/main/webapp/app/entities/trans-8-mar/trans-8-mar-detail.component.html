@@ -1,0 +1,80 @@
+
+<div *ngIf="trans8Mar">
+    <h2><span>Trans 8 Mar</span> {{trans8Mar.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Amount</span></dt>
+        <dd>
+            <span>{{trans8Mar.amount}}</span>
+        </dd>
+        <dt><span>Begin Account Balance</span></dt>
+        <dd>
+            <span>{{trans8Mar.beginAccountBalance}}</span>
+        </dd>
+        <dt><span>Is Cd</span></dt>
+        <dd>
+            <span>{{trans8Mar.isCd}}</span>
+        </dd>
+        <dt><span>Currency</span></dt>
+        <dd>
+            <span>{{trans8Mar.currency}}</span>
+        </dd>
+        <dt><span>Datetime</span></dt>
+        <dd>
+            <span>{{trans8Mar.datetime}}</span>
+        </dd>
+        <dt><span>End Account Balance</span></dt>
+        <dd>
+            <span>{{trans8Mar.endAccountBalance}}</span>
+        </dd>
+        <dt><span>Entity Fee</span></dt>
+        <dd>
+            <span>{{trans8Mar.entityFee}}</span>
+        </dd>
+        <dt><span>Linked Ipayed Trans</span></dt>
+        <dd>
+            <span>{{trans8Mar.linkedIpayedTrans}}</span>
+        </dd>
+        <dt><span>Linked Trans</span></dt>
+        <dd>
+            <span>{{trans8Mar.linkedTrans}}</span>
+        </dd>
+        <dt><span>Trans Family Id</span></dt>
+        <dd>
+            <span>{{trans8Mar.transFamilyId}}</span>
+        </dd>
+        <dt><span>Bank Account</span></dt>
+        <dd>
+            <div *ngIf="trans8Mar.bankAccount">
+                <a [routerLink]="['/bank-account', trans8Mar.bankAccount?.id]">{{trans8Mar.bankAccount?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Customer</span></dt>
+        <dd>
+            <div *ngIf="trans8Mar.customer">
+                <a [routerLink]="['/customer', trans8Mar.customer?.id]">{{trans8Mar.customer?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Trans Type Code</span></dt>
+        <dd>
+            <div *ngIf="trans8Mar.transTypeCode">
+                <a [routerLink]="['/transaction-type', trans8Mar.transTypeCode?.id]">{{trans8Mar.transTypeCode?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'trans-8-mar/'+ trans8Mar.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

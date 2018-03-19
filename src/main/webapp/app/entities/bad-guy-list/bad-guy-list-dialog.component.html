@@ -1,0 +1,146 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBadGuyListLabel">Create or edit a Bad Guy List</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!badGuyList.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="badGuyList.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_uniqueRecord">Unique Record</label>
+            <input type="text" class="form-control" name="uniqueRecord" id="field_uniqueRecord"
+                [(ngModel)]="badGuyList.uniqueRecord" required/>
+            <div [hidden]="!(editForm.controls.uniqueRecord?.dirty && editForm.controls.uniqueRecord?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.uniqueRecord?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sdnName">Sdn Name</label>
+            <input type="text" class="form-control" name="sdnName" id="field_sdnName"
+                [(ngModel)]="badGuyList.sdnName" required/>
+            <div [hidden]="!(editForm.controls.sdnName?.dirty && editForm.controls.sdnName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sdnName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sdnType">Sdn Type</label>
+            <input type="text" class="form-control" name="sdnType" id="field_sdnType"
+                [(ngModel)]="badGuyList.sdnType" required/>
+            <div [hidden]="!(editForm.controls.sdnType?.dirty && editForm.controls.sdnType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sdnType?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sanctionsProgramName">Sanctions Program Name</label>
+            <input type="text" class="form-control" name="sanctionsProgramName" id="field_sanctionsProgramName"
+                [(ngModel)]="badGuyList.sanctionsProgramName" required/>
+            <div [hidden]="!(editForm.controls.sanctionsProgramName?.dirty && editForm.controls.sanctionsProgramName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sanctionsProgramName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_titleOfIndividual">Title Of Individual</label>
+            <input type="text" class="form-control" name="titleOfIndividual" id="field_titleOfIndividual"
+                [(ngModel)]="badGuyList.titleOfIndividual" required/>
+            <div [hidden]="!(editForm.controls.titleOfIndividual?.dirty && editForm.controls.titleOfIndividual?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titleOfIndividual?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vesselCallSign">Vessel Call Sign</label>
+            <input type="text" class="form-control" name="vesselCallSign" id="field_vesselCallSign"
+                [(ngModel)]="badGuyList.vesselCallSign" required/>
+            <div [hidden]="!(editForm.controls.vesselCallSign?.dirty && editForm.controls.vesselCallSign?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vesselCallSign?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vesselTonnage">Vessel Tonnage</label>
+            <input type="text" class="form-control" name="vesselTonnage" id="field_vesselTonnage"
+                [(ngModel)]="badGuyList.vesselTonnage" required/>
+            <div [hidden]="!(editForm.controls.vesselTonnage?.dirty && editForm.controls.vesselTonnage?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vesselTonnage?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_grossRegisteredTonnage">Gross Registered Tonnage</label>
+            <input type="text" class="form-control" name="grossRegisteredTonnage" id="field_grossRegisteredTonnage"
+                [(ngModel)]="badGuyList.grossRegisteredTonnage" required/>
+            <div [hidden]="!(editForm.controls.grossRegisteredTonnage?.dirty && editForm.controls.grossRegisteredTonnage?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.grossRegisteredTonnage?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_isVessel">Is Vessel</label>
+            <input type="text" class="form-control" name="isVessel" id="field_isVessel"
+                [(ngModel)]="badGuyList.isVessel" required/>
+            <div [hidden]="!(editForm.controls.isVessel?.dirty && editForm.controls.isVessel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.isVessel?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vesselOwner">Vessel Owner</label>
+            <input type="text" class="form-control" name="vesselOwner" id="field_vesselOwner"
+                [(ngModel)]="badGuyList.vesselOwner" required/>
+            <div [hidden]="!(editForm.controls.vesselOwner?.dirty && editForm.controls.vesselOwner?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.vesselOwner?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_remark">Remark</label>
+            <input type="text" class="form-control" name="remark" id="field_remark"
+                [(ngModel)]="badGuyList.remark" required/>
+            <div [hidden]="!(editForm.controls.remark?.dirty && editForm.controls.remark?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.remark?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

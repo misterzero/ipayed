@@ -1,0 +1,66 @@
+
+<div *ngIf="badGuyList">
+    <h2><span>Bad Guy List</span> {{badGuyList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Unique Record</span></dt>
+        <dd>
+            <span>{{badGuyList.uniqueRecord}}</span>
+        </dd>
+        <dt><span>Sdn Name</span></dt>
+        <dd>
+            <span>{{badGuyList.sdnName}}</span>
+        </dd>
+        <dt><span>Sdn Type</span></dt>
+        <dd>
+            <span>{{badGuyList.sdnType}}</span>
+        </dd>
+        <dt><span>Sanctions Program Name</span></dt>
+        <dd>
+            <span>{{badGuyList.sanctionsProgramName}}</span>
+        </dd>
+        <dt><span>Title Of Individual</span></dt>
+        <dd>
+            <span>{{badGuyList.titleOfIndividual}}</span>
+        </dd>
+        <dt><span>Vessel Call Sign</span></dt>
+        <dd>
+            <span>{{badGuyList.vesselCallSign}}</span>
+        </dd>
+        <dt><span>Vessel Tonnage</span></dt>
+        <dd>
+            <span>{{badGuyList.vesselTonnage}}</span>
+        </dd>
+        <dt><span>Gross Registered Tonnage</span></dt>
+        <dd>
+            <span>{{badGuyList.grossRegisteredTonnage}}</span>
+        </dd>
+        <dt><span>Is Vessel</span></dt>
+        <dd>
+            <span>{{badGuyList.isVessel}}</span>
+        </dd>
+        <dt><span>Vessel Owner</span></dt>
+        <dd>
+            <span>{{badGuyList.vesselOwner}}</span>
+        </dd>
+        <dt><span>Remark</span></dt>
+        <dd>
+            <span>{{badGuyList.remark}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bad-guy-list/'+ badGuyList.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

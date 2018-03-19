@@ -1,0 +1,96 @@
+<div>
+    <h2>
+        <span>Prospects</span>
+        <button class="btn btn-primary float-right jh-create-entity create-prospect" [routerLink]="['/', { outlets: { popup: ['prospect-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Prospect
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="prospects">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="address1"><span>Address 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="address2"><span>Address 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="businessName"><span>Business Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="city"><span>City</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="country"><span>Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerType"><span>Customer Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dob"><span>Dob</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span>Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="firstName"><span>First Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastName"><span>Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="middleName"><span>Middle Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="phone"><span>Phone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isPoliticallyExposed"><span>Is Politically Exposed</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="prospectId"><span>Prospect Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="state"><span>State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span>Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tin"><span>Tin</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tinType"><span>Tin Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span>Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="zip"><span>Zip</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let prospect of prospects ;trackBy: trackId">
+                <td><a [routerLink]="['../prospect', prospect.id ]">{{prospect.id}}</a></td>
+                <td>{{prospect.address1}}</td>
+                <td>{{prospect.address2}}</td>
+                <td>{{prospect.businessName}}</td>
+                <td>{{prospect.city}}</td>
+                <td>{{prospect.country}}</td>
+                <td>{{prospect.customerType}}</td>
+                <td>{{prospect.dob}}</td>
+                <td>{{prospect.email}}</td>
+                <td>{{prospect.firstName}}</td>
+                <td>{{prospect.lastName}}</td>
+                <td>{{prospect.middleName}}</td>
+                <td>{{prospect.phone}}</td>
+                <td>{{prospect.isPoliticallyExposed}}</td>
+                <td>{{prospect.prospectId}}</td>
+                <td>{{prospect.state}}</td>
+                <td>{{prospect.status}}</td>
+                <td>{{prospect.tin}}</td>
+                <td>{{prospect.tinType}}</td>
+                <td>{{prospect.title}}</td>
+                <td>{{prospect.zip}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../prospect', prospect.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prospect/'+ prospect.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prospect/'+ prospect.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

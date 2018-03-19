@@ -1,0 +1,102 @@
+
+<div *ngIf="customer">
+    <h2><span>Customer</span> {{customer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Address 1</span></dt>
+        <dd>
+            <span>{{customer.address1}}</span>
+        </dd>
+        <dt><span>Address 2</span></dt>
+        <dd>
+            <span>{{customer.address2}}</span>
+        </dd>
+        <dt><span>Business Name</span></dt>
+        <dd>
+            <span>{{customer.businessName}}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+            <span>{{customer.city}}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+            <span>{{customer.country}}</span>
+        </dd>
+        <dt><span>Create Date</span></dt>
+        <dd>
+            <span>{{customer.createDate}}</span>
+        </dd>
+        <dt><span>Dob</span></dt>
+        <dd>
+            <span>{{customer.dob}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{customer.email}}</span>
+        </dd>
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{customer.firstName}}</span>
+        </dd>
+        <dt><span>Inactive Date</span></dt>
+        <dd>
+            <span>{{customer.inactiveDate}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{customer.lastName}}</span>
+        </dd>
+        <dt><span>Middle Name</span></dt>
+        <dd>
+            <span>{{customer.middleName}}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+            <span>{{customer.phone}}</span>
+        </dd>
+        <dt><span>Is Politically Exposed</span></dt>
+        <dd>
+            <span>{{customer.isPoliticallyExposed}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{customer.state}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{customer.status}}</span>
+        </dd>
+        <dt><span>Tin</span></dt>
+        <dd>
+            <span>{{customer.tin}}</span>
+        </dd>
+        <dt><span>Tin Type</span></dt>
+        <dd>
+            <span>{{customer.tinType}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{customer.title}}</span>
+        </dd>
+        <dt><span>Zip</span></dt>
+        <dd>
+            <span>{{customer.zip}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'customer/'+ customer.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

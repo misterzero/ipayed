@@ -1,0 +1,83 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBankAccountLabel">Create or edit a Bank Account</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bankAccount.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bankAccount.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tosFlag">Tos Flag</label>
+            <input type="text" class="form-control" name="tosFlag" id="field_tosFlag"
+                [(ngModel)]="bankAccount.tosFlag" required/>
+            <div [hidden]="!(editForm.controls.tosFlag?.dirty && editForm.controls.tosFlag?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tosFlag?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dateOfTos">Date Of Tos</label>
+            <input type="text" class="form-control" name="dateOfTos" id="field_dateOfTos"
+                [(ngModel)]="bankAccount.dateOfTos" required/>
+            <div [hidden]="!(editForm.controls.dateOfTos?.dirty && editForm.controls.dateOfTos?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateOfTos?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_accountBeginDate">Account Begin Date</label>
+            <input type="text" class="form-control" name="accountBeginDate" id="field_accountBeginDate"
+                [(ngModel)]="bankAccount.accountBeginDate" required/>
+            <div [hidden]="!(editForm.controls.accountBeginDate?.dirty && editForm.controls.accountBeginDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.accountBeginDate?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_accountEndDate">Account End Date</label>
+            <input type="text" class="form-control" name="accountEndDate" id="field_accountEndDate"
+                [(ngModel)]="bankAccount.accountEndDate" required/>
+            <div [hidden]="!(editForm.controls.accountEndDate?.dirty && editForm.controls.accountEndDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.accountEndDate?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_accountTypeCode">Account Type Code</label>
+            <select class="form-control" id="field_accountTypeCode" name="accountTypeCode" [(ngModel)]="bankAccount.accountTypeCode" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bankAccountTypeOption.id === bankAccount.accountTypeCode?.id ? bankAccount.accountTypeCode : bankAccountTypeOption" *ngFor="let bankAccountTypeOption of bankaccounttypes; trackBy: trackBankAccountTypeById">{{bankAccountTypeOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="bankAccount.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === bankAccount.customer?.id ? bankAccount.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

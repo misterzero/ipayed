@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span>Bank Accounts</span>
+        <button class="btn btn-primary float-right jh-create-entity create-bank-account" [routerLink]="['/', { outlets: { popup: ['bank-account-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Bank Account
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bankAccounts">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tosFlag"><span>Tos Flag</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateOfTos"><span>Date Of Tos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountBeginDate"><span>Account Begin Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountEndDate"><span>Account End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountTypeCode.id"><span>Account Type Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customer.id"><span>Customer</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let bankAccount of bankAccounts ;trackBy: trackId">
+                <td><a [routerLink]="['../bank-account', bankAccount.id ]">{{bankAccount.id}}</a></td>
+                <td>{{bankAccount.tosFlag}}</td>
+                <td>{{bankAccount.dateOfTos}}</td>
+                <td>{{bankAccount.accountBeginDate}}</td>
+                <td>{{bankAccount.accountEndDate}}</td>
+                <td>
+                    <div *ngIf="bankAccount.accountTypeCode">
+                        <a [routerLink]="['../bank-account-type', bankAccount.accountTypeCode?.id ]" >{{bankAccount.accountTypeCode?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="bankAccount.customer">
+                        <a [routerLink]="['../customer', bankAccount.customer?.id ]" >{{bankAccount.customer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bank-account', bankAccount.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bank-account/'+ bankAccount.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bank-account/'+ bankAccount.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
