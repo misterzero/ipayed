@@ -17,7 +17,6 @@ import { FictionalbankAdminModule } from './admin/admin.module';
 import { FictionalbankAccountModule } from './account/account.module';
 import { FictionalbankEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
-import { AdminHomeModule } from "./admin-home";
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
     JhiMainComponent,
@@ -38,8 +37,7 @@ import {
         FictionalbankHomeModule,
         FictionalbankAdminModule,
         FictionalbankAccountModule,
-        FictionalbankEntityModule,
-        AdminHomeModule
+        FictionalbankEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
