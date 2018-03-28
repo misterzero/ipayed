@@ -4,20 +4,24 @@ import { registerLocaleData } from '@angular/common';
 import locale from '@angular/common/locales/en';
 
 import {
-    IpayedSharedLibsModule,
+    FictionalbankSharedLibsModule,
+    JhiLanguageHelper,
+    FindLanguageFromKeyPipe,
     JhiAlertComponent,
     JhiAlertErrorComponent
 } from './';
 
 @NgModule({
     imports: [
-        IpayedSharedLibsModule
+        FictionalbankSharedLibsModule
     ],
     declarations: [
+        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ],
     providers: [
+        JhiLanguageHelper,
         Title,
         {
             provide: LOCALE_ID,
@@ -25,12 +29,13 @@ import {
         },
     ],
     exports: [
-        IpayedSharedLibsModule,
+        FictionalbankSharedLibsModule,
+        FindLanguageFromKeyPipe,
         JhiAlertComponent,
         JhiAlertErrorComponent
     ]
 })
-export class IpayedSharedCommonModule {
+export class FictionalbankSharedCommonModule {
     constructor() {
         registerLocaleData(locale);
     }

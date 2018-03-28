@@ -3,15 +3,15 @@ import { RouterModule } from '@angular/router';
 
 import { FictionalbankSharedModule } from '../shared';
 
-import { HOME_ROUTE, HomeComponent } from './';
+import { ADMIN_HOME_ROUTE, AdminHomeComponent } from './';
 
 @NgModule({
     imports: [
         FictionalbankSharedModule,
-        RouterModule.forChild([ HOME_ROUTE ])
+        RouterModule.forChild([ ADMIN_HOME_ROUTE ])
     ],
     declarations: [
-        HomeComponent,
+        AdminHomeComponent,
     ],
     entryComponents: [
     ],
@@ -19,4 +19,4 @@ import { HOME_ROUTE, HomeComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class FictionalbankHomeModule {}
+export class AdminHomeModule {}

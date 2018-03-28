@@ -2,8 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import {
-    IpayedSharedLibsModule,
-    IpayedSharedCommonModule,
+    FictionalbankSharedLibsModule,
+    FictionalbankSharedCommonModule,
     CSRFService,
     AuthServerProvider,
     AccountService,
@@ -18,8 +18,8 @@ import {
 
 @NgModule({
     imports: [
-        IpayedSharedLibsModule,
-        IpayedSharedCommonModule
+        FictionalbankSharedLibsModule,
+        FictionalbankSharedCommonModule
     ],
     declarations: [
         JhiLoginModalComponent,
@@ -38,7 +38,7 @@ import {
     ],
     entryComponents: [JhiLoginModalComponent],
     exports: [
-        IpayedSharedCommonModule,
+        FictionalbankSharedCommonModule,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
         DatePipe
@@ -46,4 +46,4 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class IpayedSharedModule {}
+export class FictionalbankSharedModule {}
