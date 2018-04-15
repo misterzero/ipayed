@@ -75,7 +75,7 @@ export class JhiLoginModalComponent implements AfterViewInit {
 
     register() {
         this.activeModal.dismiss('to state register');
-        this.router.navigate(['/register']);
+        this.router.navigate(['register/user']);
     }
 
     requestResetPassword() {
