@@ -24,3 +24,7 @@ only screen and (                min-resolution: 2dppx) {
     }
 }
 
+.welcome-buttons{
+    max-width: 148px !important;
+    overflow-wrap: break-word !important;
+}
